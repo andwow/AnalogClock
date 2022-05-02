@@ -215,7 +215,7 @@ public class Timer extends SurfaceView implements Runnable {
         try {
             while(run) {
                 Thread.sleep(1);
-                if (milisec < 1000) {
+                if (milisec < 999) {
                     ++milisec;
                 } else if (sec < 59) {
                     milisec = 0;
