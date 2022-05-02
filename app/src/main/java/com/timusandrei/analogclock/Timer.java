@@ -204,7 +204,7 @@ public class Timer extends SurfaceView implements Runnable {
             //Toast.makeText(getContext(), "Limit time greater than actual", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(limitHour == hour && limitMin == min && limitSec < sec) {
+        if(limitHour == hour && limitMin == min && limitSec <= sec) {
             //Toast.makeText(getContext(), "Limit time greater than actual", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -217,10 +217,10 @@ public class Timer extends SurfaceView implements Runnable {
                 Thread.sleep(1);
                 if (milisec < 1000) {
                     ++milisec;
-                } else if (sec < 60) {
+                } else if (sec < 59) {
                     milisec = 0;
                     ++sec;
-                } else if (min < 60) {
+                } else if (min < 59) {
                     milisec = 0;
                     sec = 0;
                     ++min;
