@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/clock_item"
+        android:title="Clock"/>
+    <item android:id="@+id/timer_item"
+        android:title="Timer"/>
+    <item android:id="@+id/alarm_item"
+        android:title="Alarm"/>
+    <item android:id="@+id/customization_item"
+        android:title="Color customization"/>
+</menu>
