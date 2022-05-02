@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.os.Build;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.Toast;
 
 import com.timusandrei.analogclock.singletons.ColorSingleton;
 
@@ -196,12 +197,19 @@ public class Timer extends SurfaceView implements Runnable {
 
     private void increaseTimer() {
         if(limitHour < hour) {
+            //Toast.makeText(getContext(), "Limit time greater than actual", Toast.LENGTH_SHORT).show();
             return;
         }
         if(limitHour == hour && limitMin < min) {
+            //Toast.makeText(getContext(), "Limit time greater than actual", Toast.LENGTH_SHORT).show();
             return;
         }
         if(limitHour == hour && limitMin == min && limitSec < sec) {
+            //Toast.makeText(getContext(), "Limit time greater than actual", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(limitMin > 59 || limitSec > 59) {
+            //Toast.makeText(getContext(), "Minutes or seconds greater than possible", Toast.LENGTH_SHORT).show();
             return;
         }
         try {

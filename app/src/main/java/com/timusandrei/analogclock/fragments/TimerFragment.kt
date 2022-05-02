@@ -2,6 +2,7 @@ package com.timusandrei.analogclock.fragments
 
 import android.app.TimePickerDialog
 import android.os.Bundle
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.text.set
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.timusandrei.analogclock.R
@@ -40,6 +42,8 @@ class TimerFragment : Fragment() {
             if(limitHour != null && limitHour.text.isNotEmpty() && limitHour.text.isNotBlank()) {
                 var hour: Int = limitHour.text.toString().toInt()
                 timer!!.limitHour = hour
+            } else {
+                timer!!.limitHour = 0
             }
         }
 
@@ -47,6 +51,8 @@ class TimerFragment : Fragment() {
             if(limitMin != null && limitMin.text.isNotEmpty() && limitMin.text.isNotBlank()) {
                 var min: Int = limitMin.text.toString().toInt()
                 timer!!.limitMin = min
+            } else {
+                timer!!.limitMin = 0
             }
         }
 
@@ -54,6 +60,8 @@ class TimerFragment : Fragment() {
             if(limitSec != null && limitSec.text.isNotEmpty() && limitSec.text.isNotBlank()) {
                 var sec: Int = limitSec.text.toString().toInt()
                 timer!!.limitSec = sec
+            } else {
+                timer!!.limitSec = 0
             }
         }
 
