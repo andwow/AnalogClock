@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id : Int  = item.itemId;
+        val id : Int  = item.itemId
 
         when(id) {
             R.id.clock_item -> {
@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                 transaction.commit()
             }
             R.id.customization_item -> {
-                val intent: Intent = Intent(this, CustomizationActivity::class.java)
+                val intent = Intent(this, CustomizationActivity::class.java)
                 startActivity(intent)
             }
         }

@@ -3,15 +3,10 @@ package com.timusandrei.analogclock;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.ComposePathEffect;
 import android.graphics.Paint;
-import android.graphics.Rect;
-import android.hardware.biometrics.BiometricManager;
 import android.os.Build;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-
-import androidx.annotation.NonNull;
 
 import com.timusandrei.analogclock.singletons.ColorSingleton;
 
@@ -20,9 +15,9 @@ import java.time.LocalTime;
 public class Clock extends SurfaceView implements Runnable {
 
     private Thread thread = null;
-    private SurfaceHolder surfaceHolder;
+    private final SurfaceHolder surfaceHolder;
     private boolean running = false;
-    private ColorSingleton colors;
+    private final ColorSingleton colors;
 
     public Clock(Context context) {
         super(context);
@@ -38,7 +33,6 @@ public class Clock extends SurfaceView implements Runnable {
                 int middleX = getWidth() / 2;
                 int middleY = getHeight() / 2;
                 int radius = 500;
-                int milisecMiddleX = middleX;
                 int milisecMiddleY = middleY - radius / 3;
                 int centerRadius = 20;
 
@@ -55,11 +49,11 @@ public class Clock extends SurfaceView implements Runnable {
 
                 paint.setColor(colors.getIndicators());
 
-                canvas.drawCircle(milisecMiddleX, milisecMiddleY, 100, paint);
+                canvas.drawCircle(middleX, milisecMiddleY, 100, paint);
 
                 paint.setColor(colors.getBackGround());
 
-                canvas.drawCircle(milisecMiddleX, milisecMiddleY, 95, paint);
+                canvas.drawCircle(middleX, milisecMiddleY, 95, paint);
 
                 paint.setColor(colors.getIndicators());
                 paint.setTextSize(80);
@@ -97,7 +91,7 @@ public class Clock extends SurfaceView implements Runnable {
                         minRadius = 6;
                     }
 
-                    float x = milisecMiddleX + len * (float) Math.cos(milisecCoef);
+                    float x = middleX + len * (float) Math.cos(milisecCoef);
                     float y = milisecMiddleY + len * (float) Math.sin(milisecCoef);
                     canvas.drawCircle(x, y, minRadius, paint);
                 }
@@ -117,9 +111,9 @@ public class Clock extends SurfaceView implements Runnable {
                     paint.setStrokeWidth(3f);
 
                     float len = 90;
-                    float x = milisecMiddleX + len * (float) Math.cos(milisecCoef);
+                    float x = middleX + len * (float) Math.cos(milisecCoef);
                     float y = milisecMiddleY + len * (float) Math.sin(milisecCoef);
-                    canvas.drawLine(milisecMiddleX, milisecMiddleY, x, y, paint);
+                    canvas.drawLine(middleX, milisecMiddleY, x, y, paint);
 
                     paint.setColor(colors.getHourHand());
                     paint.setStrokeWidth(15f);

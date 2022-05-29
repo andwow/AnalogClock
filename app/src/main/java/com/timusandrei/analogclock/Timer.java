@@ -5,18 +5,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.widget.Toast;
 
 import com.timusandrei.analogclock.singletons.ColorSingleton;
-
-import java.time.Duration;
-import java.time.Instant;
-import java.time.LocalTime;
-import java.time.temporal.TemporalAmount;
-import java.time.temporal.TemporalUnit;
 
 public class Timer extends SurfaceView implements Runnable {
 
@@ -26,10 +18,9 @@ public class Timer extends SurfaceView implements Runnable {
     int milisec = 0;
     private boolean run = false;
     private Thread thread = null;
-    private Thread countThread = null;
-    private SurfaceHolder surfaceHolder;
+    private final SurfaceHolder surfaceHolder;
     private boolean running = false;
-    private ColorSingleton colors;
+    private final ColorSingleton colors;
 
     private int limitHour;
     private int limitMin;
@@ -57,7 +48,7 @@ public class Timer extends SurfaceView implements Runnable {
             run = false;
         } else {
             run = true;
-            countThread = new Thread(this::increaseTimer);
+            Thread countThread = new Thread(this::increaseTimer);
             countThread.start();
         }
     }
@@ -233,13 +224,10 @@ public class Timer extends SurfaceView implements Runnable {
                 if (hour == limitHour && min == limitMin && sec == limitSec) {
                     run = false;
                     MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.moogle2);
-                    mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mp) {
-                            mp.reset();
-                            mp.release();
-                            mp=null;
-                        }
+                    mp.setOnCompletionListener(mp1 -> {
+                        mp1.reset();
+                        mp1.release();
+                        mp1 =null;
                     });
                     mp.start();
                 }

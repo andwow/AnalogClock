@@ -43,12 +43,12 @@ class CustomizationActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
         val seconds = findViewById<Spinner>(id.seconds_hand_color)
         val milliseconds = findViewById<Spinner>(id.milliseconds_hand_color)
 
-        backgroud.adapter = adapter;
-        indicators.adapter = adapter;
-        hours.adapter = adapter;
-        minutes.adapter = adapter;
-        seconds.adapter = adapter;
-        milliseconds.adapter = adapter;
+        backgroud.adapter = adapter
+        indicators.adapter = adapter
+        hours.adapter = adapter
+        minutes.adapter = adapter
+        seconds.adapter = adapter
+        milliseconds.adapter = adapter
 
         backgroud.onItemSelectedListener = this
         indicators.onItemSelectedListener = this

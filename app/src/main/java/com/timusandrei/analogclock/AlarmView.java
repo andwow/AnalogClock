@@ -14,9 +14,9 @@ public class AlarmView extends SurfaceView implements Runnable {
     private int hour = 9;
     private int min = 0;
     private Thread thread = null;
-    private SurfaceHolder surfaceHolder;
+    private final SurfaceHolder surfaceHolder;
     private boolean running = false;
-    private ColorSingleton colors;
+    private final ColorSingleton colors;
 
     public AlarmView(Context context) {
         super(context);
